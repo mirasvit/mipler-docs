@@ -7,6 +7,18 @@ slug: /changelog
 
 Please refer to this page to view the latest changes and improvements in Mipler Reports.
 
+## 🗓️ Mar 2025
+
+### ⭐ Built for Shopify
+
+Meeting the **Built for Shopify** standards was a challenging journey. After a few months of hard work, we finally achieved **Built for Shopify** status — a recognition of the highest level of app excellence that surpasses other app highlights.
+
+## 🗓️ Feb 2025
+
+* Enhanced application performance
+* Implemented major interface improvements for a better user experience
+* Updated the daily email templates
+
 ## 🗓️ Jan 2025
 
 * Moved the app to Shopify's built-in (embedded) mode. By default, the app now opens inside the Shopify admin, with the option to open a standalone interface as before.
@@ -29,7 +41,8 @@ Added an option to link data from multiple stores. This functionality allows you
   * Filter reports by store name
   * Create pivot reports by store
 
-### Improvements
+---
+
 * Enhanced error handling and user feedback mechanisms.
 * Added payment schedule columns (amount, currency, and due date) to reports.
 
@@ -47,34 +60,18 @@ After several months of hard work, we finally released a new platform version wi
 
 ## 🗓️ Jun 2022
 
-### 🆕 New Features
-
 * New Public View interface with detailed information about last update, owner and applied filters
-
-### Improvements
-
 * New Grid component (based on canvas) allows displaying thousands rows and columns without lags
 
 ## 🗓️ May 2022
 
-### 🆕 New Features 
 *  Schema editor was replaced with new Projects and Schema Studio functionality
-*   Added Development Mode (switcher added to the sidebar)
-*  Ability to freeze and resize columns
-
-### Improvements
-
+* Added Development Mode (switcher added to the sidebar)
+Ability to freeze and resize columns
 * Added global sidebar with quick access links
 * Link to edit AML was added to Field Info popup
 
----
-
 ## 🗓️ April 2022
 
-### New Features
-
 * Home Page with common blocks: Favorites, Trending, Recently Viewed and Most Popular
-
-### Improvements
-
 * Ability to select Portrait / Landscape for PDF export
