@@ -34,7 +34,7 @@ Meeting the **Built for Shopify** standards was a challenging journey. After a f
 
 ## 🗓️ Nov 2024
 
-### 🆕 Multi-Store Reporting
+**🆕 Multi-Store Reporting**
 
 Added an option to link data from multiple stores. This functionality allows you to:
   * Build aggregated reports **using data from multiple stores**
