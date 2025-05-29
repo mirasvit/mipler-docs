@@ -7,9 +7,19 @@ slug: /changelog
 
 Please refer to this page to view the latest changes and improvements in Mipler Reports.
 
+## 🗓️ May 2025
+
+**🤖 AI Assistant**
+
+We’ve launched a powerful AI Assistant designed to streamline reporting and data analysis in Mipler. 
+
+It can automatically generate new columns, create fully customized reports from scratch, and modify existing reports to match evolving business needs. 
+
+The assistant also answers natural language questions about your Shopify store data, helping users uncover insights, track performance, and make informed decisions without needing MQL or technical skills.
+
 ## 🗓️ Mar 2025
 
-### ⭐ Built for Shopify
+**⭐ Built for Shopify**
 
 Meeting the **Built for Shopify** standards was a challenging journey. After a few months of hard work, we finally achieved **Built for Shopify** status — a recognition of the highest level of app excellence that surpasses other app highlights.
 
