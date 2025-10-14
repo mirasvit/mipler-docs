@@ -1,0 +1,10 @@
+{
+  "label": "Code Snippets",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "Code Snippets",
+    "description": "The list of various ACE expressions and snippets:",
+    "slug": "/snippets"
+  }
+}
