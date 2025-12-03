@@ -4,7 +4,9 @@ title: convert
 slug: /ace/convert
 tags: [Math]
 ---
+
 Convert an expression to the specified data type.
+
 ### Syntax
 
  ```yaml
@@ -20,5 +22,17 @@ convert(<expr>, <dataType>)
 Depends on input arguments.
 
 
+## Usage
+
+Converts order number from string to integer for numeric operations.
+
+
+```yaml
+convert(orders.order_number, INT)
+```
+
+
 ### Related functions      
 * [int](/ace/int)
+* [abs](/ace/abs)
+* [format](/ace/format)

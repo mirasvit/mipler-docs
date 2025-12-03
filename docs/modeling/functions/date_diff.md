@@ -4,7 +4,9 @@ title: date_diff
 slug: /ace/date_diff
 tags: [Date and Time]
 ---
+
 Returns the number of units (unit specified in Interval) between the input two dates.
+
 ### Syntax
 
  ```yaml
@@ -21,5 +23,18 @@ date_diff(<date1>, <date2>, <interval>)
 Integer
 
 
+## Usage
+
+Calculates the number of days between the order creation date and today.
+
+
+```yaml
+date_diff(orders.created_at, now(), DAY)
+```
+
+
 ### Related functions      
 * [date_add](/ace/date_add)
+* [date](/ace/date)
+* [date_value](/ace/date_value)
+* [now](/ace/now)

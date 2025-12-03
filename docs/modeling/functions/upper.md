@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2   
-title: lower
-slug: /ace/lower
+title: upper
+slug: /ace/upper
 tags: [Text]
 ---
 
-Converts a string to lowercase.
+Converts a string to uppercase.
 
 ### Syntax
 
  ```yaml
-lower(<text>)
+upper(<text>)
 ```
     
 | Parameter   | Type | Description |
@@ -23,15 +23,15 @@ Text
 
 ## Usage
 
-Converts customer name to lowercase.
+Converts customer name to uppercase.
 
 
 ```yaml
-lower(orders.customer_name)
+upper(orders.customer_name)
 ```
 
 
 ### Related functions      
-* [upper](/ace/upper)
+* [lower](/ace/lower)
 * [init_cap](/ace/init_cap)
 * [str_replace](/ace/str_replace)

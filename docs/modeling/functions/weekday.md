@@ -4,7 +4,9 @@ title: weekday
 slug: /ace/weekday
 tags: [Date and Time]
 ---
+
 Returns a number representing the day of the week of the date provided.
+
 ### Syntax
 
  ```yaml
@@ -19,17 +21,27 @@ weekday(<date>)
 Integer
 
 
-### Usages      
+## Usage
+
+Returns the day of the week for the date.
+
 
 ```yaml
 weekday(date(2022, 5, 12))
-```    
+```
+
+
+Returns the day of the week for the date.
+
 
 ```yaml
 weekday(orders.processed_at)
-```    
+```
+
 
 ### Related functions      
 * [year](/ace/year)
 * [month](/ace/month)
 * [hour](/ace/hour)
+* [day](/ace/day)
+* [week](/ace/week)

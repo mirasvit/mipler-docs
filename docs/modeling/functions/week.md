@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2   
-title: hour
-slug: /ace/hour
+title: week
+slug: /ace/week
 tags: [Date and Time]
 ---
 
-Extracts the hour from a datetime value.
+Extracts the week number from a date value.
 
 ### Syntax
 
  ```yaml
-hour(<date>)
+week(<date>)
 ```
     
 | Parameter   | Type | Description |
@@ -23,16 +23,17 @@ Integer
 
 ## Usage
 
-Extracts the hour from the order creation datetime.
+Extracts the week number from the order creation date.
 
 
 ```yaml
-hour(orders.created_at)
+week(orders.created_at)
 ```
 
 
 ### Related functions      
-* [weekday](/ace/weekday)
 * [year](/ace/year)
+* [weekday](/ace/weekday)
 * [month](/ace/month)
 * [day](/ace/day)
+* [quarter](/ace/quarter)

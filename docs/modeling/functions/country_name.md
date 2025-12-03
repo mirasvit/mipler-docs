@@ -4,7 +4,9 @@ title: country_name
 slug: /ace/country_name
 tags: [Geo]
 ---
+
 Returns US Country Name
+
 ### Syntax
 
  ```yaml
@@ -13,19 +15,32 @@ country_name(<state>, <city>)
     
 | Parameter   | Type | Description |
 | ----------- | ---- | ----------- |     
-| state | Text |  |
-| city | Text |  |
+| state | Text | The State string value. |
+| city | Text | The City string value. |
 
 ### Return values
 Text
 
 
-### Usages      
+## Usage
+
+Converts country code to full country name.
+
 
 ```yaml
-COUNTRY_NAME("Arizona", "Phoenix")
-```    
+country_name("Arizona", "Phoenix")
+```
+
+
+Converts country code to full country name.
+
 
 ```yaml
-COUNTRY_NAME("FL", "Tampa")
-```    
+country_name("FL", "Tampa")
+```
+
+
+### Related functions      
+* [format](/ace/format)
+* [str_replace](/ace/str_replace)
+* [convert](/ace/convert)
