@@ -4,18 +4,10 @@ title: date
 slug: /ace/date
 tags: [Date and Time]
 ---
-Converts a year, month, and day into a date.
-### Syntax
 
- ```yaml
-date(<year>, <month>, <day>)
-```
-    
-| Parameter   | Type | Description |
-| ----------- | ---- | ----------- |     
-| year | Integer | The year component of the date. |
-| month | Integer | The month component of the date. |
-| day | Integer | The day component of the date. |
+Converts a year, month, and day into a date.
+
+### Syntax
 
  ```yaml
 date(<date>)
@@ -29,15 +21,23 @@ date(<date>)
 Date
 
 
-### Usages      
+## Usage
+
+Creates a date value from year (1922), month (7), and day (20).
+
 
 ```yaml
 date(1922, 7, 20)
-```    
+```
+
+
+Strips the time part from the order creation datetime, keeping only the date.
+
 
 ```yaml
 date(orders.created_at)
-```    
+```
+
 
 ### Related functions      
 * [date_add](/ace/date_add)

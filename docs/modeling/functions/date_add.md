@@ -4,7 +4,9 @@ title: date_add
 slug: /ace/date_add
 tags: [Date and Time]
 ---
+
 Moves the given date by a specified interval.
+
 ### Syntax
 
  ```yaml
@@ -21,15 +23,26 @@ date_add(<date>, <intervals>, <interval>)
 Date
 
 
-### Usages      
+## Usage
+
+Adds the specified interval to the date.
+
 
 ```yaml
 date_add(orders.created_at, 5, HOUR)
-```    
+```
+
+
+Adds the specified interval to the date.
+
 
 ```yaml
 date_add(orders.created_at, if(weekday(orders.created_at) == 6, 1, 0), DAY)
-```    
+```
+
 
 ### Related functions      
 * [date_diff](/ace/date_diff)
+* [date](/ace/date)
+* [date_value](/ace/date_value)
+* [now](/ace/now)

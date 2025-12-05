@@ -1,16 +1,16 @@
 ---
 sidebar_position: 2   
-title: lower
-slug: /ace/lower
+title: init_cap
+slug: /ace/init_cap
 tags: [Text]
 ---
 
-Converts a string to lowercase.
+Capitalizes the first letter of each word in a string.
 
 ### Syntax
 
  ```yaml
-lower(<text>)
+init_cap(<text>)
 ```
     
 | Parameter   | Type | Description |
@@ -23,15 +23,15 @@ Text
 
 ## Usage
 
-Converts customer name to lowercase.
+Capitalizes the first letter of each word in the customer name.
 
 
 ```yaml
-lower(orders.customer_name)
+init_cap(orders.customer_name)
 ```
 
 
 ### Related functions      
 * [upper](/ace/upper)
-* [init_cap](/ace/init_cap)
+* [lower](/ace/lower)
 * [str_replace](/ace/str_replace)

@@ -2,11 +2,17 @@
 $definition = json_decode(file_get_contents("./ace.json"), true);
 
 usort($definition['functions'], function ($a, $b) {
-    return $a['scope'] < $b['scope'];
+    $scopeA = !empty($a['scope']) ? $a['scope'] : '';
+    $scopeB = !empty($b['scope']) ? $b['scope'] : '';
+    $scopeCompare = strcmp($scopeA, $scopeB);
+    if ($scopeCompare !== 0) {
+        return $scopeCompare;
+    }
+    // If scopes are equal, sort by name
+    return strcmp(strtolower($a['name']), strtolower($b['name']));
 });
 
 foreach ($definition['functions'] as $function) {
-    print_r($function);
     $fileName = strtolower($function['name']) . '.md';
     $slug     = '/ace/' . strtolower($function['name']);
 
@@ -16,24 +22,32 @@ title: {$function['name']}
 slug: {$slug}
 tags: [{$function['scope']}]
 ---
-{$function['description']}\n";
+
+{$function['description']}
+
+";
 
 
     $content .= "### Syntax\n";
-    foreach ($function['syntax'] as $syntax) {
-        $content .= "
+    // Show only the first syntax variant
+    $syntax = $function['syntax'][0];
+    $content .= "
  ```yaml
 {$syntax['syntax']}
 ```
     ";
-        if (count($syntax['arguments']) > 0) {
-            $content .= "
+    if (count($syntax['arguments']) > 0) {
+        $content .= "
 | Parameter   | Type | Description |
 | ----------- | ---- | ----------- |     
 ";
-            foreach ($syntax['arguments'] as $argument) {
-                $content .= "| ${argument['name']} | ${argument['type']} | ${argument['description']} |\n";
-            }
+        $maxArgs = 6; // Limit displayed arguments for readability (show 3 condition/value pairs)
+        $argsToShow = array_slice($syntax['arguments'], 0, $maxArgs);
+        foreach ($argsToShow as $argument) {
+            $content .= "| {$argument['name']} | {$argument['type']} | {$argument['description']} |\n";
+        }
+        if (count($syntax['arguments']) > $maxArgs) {
+            $content .= "| ... | ... | Additional condition/value pairs can be added |\n";
         }
     }
 
@@ -44,13 +58,21 @@ tags: [{$function['scope']}]
 
     if (count($function['usages']) > 0) {
         $content .= "
-### Usages      
+## Usage
 ";
-        foreach ($function['usages'] as $usage) {
+        foreach ($function['usages'] as $index => $usage) {
+            // Add description if available
+            if (!empty($function['usageDescriptions'][$index])) {
+                $content .= "
+{$function['usageDescriptions'][$index]}
+
+";
+            }
             $content .= "
 ```yaml
 {$usage}
-```    
+```
+
 ";
         }
     }
@@ -74,10 +96,10 @@ tags: [{$function['scope']}]
 ";
         foreach ($function['relatedFunctions'] as $fn) {
             $s       = '/ace/' . strtolower($fn);
-            $content .= "* [${fn}](${s})\n";
+            $content .= "* [{$fn}]({$s})\n";
         }
     }
-    file_put_contents(dirname(__FILE__) . '/docs/modeling/functions/' . $fileName, $content);
+    file_put_contents(dirname(__FILE__) . '/../docs/modeling/functions/' . $fileName, $content);
 }
 
 
@@ -94,7 +116,7 @@ $content  .= "
 foreach ($definition['functions'] as $function) {
     $link = '/ace/' . strtolower($function['name']);
 
-    $content .= "| [${function['name']}](${link}) | ${function['scope']} | ${function['description']} |\n";
+    $content .= "| [{$function['name']}]({$link}) | {$function['scope']} | {$function['description']} |\n";
 }
 
-file_put_contents(dirname(__FILE__) . '/docs/modeling/functions/' . $fileName, $content);
+file_put_contents(dirname(__FILE__) . '/../docs/modeling/functions/' . $fileName, $content);

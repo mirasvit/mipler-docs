@@ -5,6 +5,8 @@ slug: /ace/ceiling
 tags: [Math]
 ---
 
+Rounds a number up to the nearest integer.
+
 ### Syntax
 
  ```yaml
@@ -13,17 +15,23 @@ ceiling(<expr>)
     
 | Parameter   | Type | Description |
 | ----------- | ---- | ----------- |     
-| expr | Number |  |
+| expr | Number | The expression to evaluate. |
 
 ### Return values
 Integer
 
 
-### Usages      
+## Usage
+
+Rounds the discount amount up to the nearest integer.
+
 
 ```yaml
-CEILING(orders.discount_amount)
-```    
+ceiling(orders.discount_amount)
+```
+
 
 ### Related functions      
 * [abs](/ace/abs)
+* [int](/ace/int)
+* [convert](/ace/convert)

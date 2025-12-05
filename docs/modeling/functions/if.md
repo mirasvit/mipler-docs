@@ -4,7 +4,9 @@ title: if
 slug: /ace/if
 tags: [Logical]
 ---
+
 Returns one value if a logical expression is TRUE and another if it is FALSE.
+
 ### Syntax
 
  ```yaml
@@ -21,15 +23,26 @@ if(<condition>, <then>, <else>)
 Depends on input arguments.
 
 
-### Usages      
+## Usage
+
+Returns 'United States' if country is 'US', otherwise 'Other'.
+
 
 ```yaml
 if(orders.country == "US", "United States", "Other")
-```    
+```
+
+
+Returns 'in stock' if quantity is greater than 0, otherwise 'out of stock'.
+
 
 ```yaml
 if(products.qty > 0, "in stock", "out of stock")
-```    
+```
+
+
+Returns one value if condition is true, another if false.
+
 
 ```yaml
 if(
@@ -42,9 +55,13 @@ if(
     )
 )
 
-```    
+```
+
 
 ### Related functions      
 * [case](/ace/case)
 * [and](/ace/and)
 * [or](/ace/or)
+* [not](/ace/not)
+* [is_blank](/ace/is_blank)
+* [is_empty](/ace/is_empty)
