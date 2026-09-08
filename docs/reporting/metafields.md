@@ -6,7 +6,7 @@ Shopify metafields let you store custom data on products, variants, orders, cust
 
 ### How it works
 
-Mipler periodically scans your store for metafields. This scan only detects which metafields exist (their namespace and key) — it does not sync their values yet.
+Mipler periodically scans your store for metafields. This scan only detects which metafields exist (their namespace and key) - it does not sync their values yet.
 
 You can trigger a scan manually from **Settings → Store data → Metafields synchronization**:
 
@@ -23,7 +23,7 @@ You can trigger a scan manually from **Settings → Store data → Metafields sy
 
 <img src="/docs/img/reporting/metafields/s2_search-match.png" />
 
-4. Click **Add as column**. The column is created immediately and appears in the column list like any other column — check its box to add it to the report.
+4. Click **Add as column**. The column is created immediately and appears in the column list like any other column - check its box to add it to the report.
 
 <img src="/docs/img/reporting/metafields/s3_toast.png" />
 
@@ -37,14 +37,14 @@ If your search does not match any known metafield, you will see a generic messag
 
 <img src="/docs/img/reporting/metafields/s4_no-match.png" />
 
-This can mean the metafield genuinely does not exist, or the periodic scan has not picked it up yet — try again later, or reach out to Support.
+This can mean the metafield genuinely does not exist, or the periodic scan has not picked it up yet - try again later, or reach out to Support.
 
 ---
 
 ### Important Notes
 
 - **Refresh the tab after adding a column.** The report tab needs a refresh before the new column shows up in the column picker.
-- **Values may take time to appear.** Adding a metafield column automatically turns on synchronization for that entity if it was off. The column stays empty until that sync finishes — this can take a few minutes, longer for larger stores.
+- **Values may take time to appear.** Adding a metafield column automatically turns on synchronization for that entity if it was off. The column stays empty until that sync finishes - this can take a few minutes, longer for larger stores.
 - **Scanning and syncing are different steps.** Scanning only detects which metafields exist. Synchronization is what pulls their actual values into your reports.
 - **This does not replace the Metafields synchronization checkboxes.** You can still enable synchronization for an entity manually from **Settings → Store data**, before searching for any specific metafield.
 
