@@ -10,7 +10,7 @@ Mipler periodically scans your store for metafields. This scan only detects whic
 
 You can trigger a scan manually from **Settings → Store data → Metafields synchronization**:
 
-<!-- SCREENSHOT: Settings → Store data page, "Metafields synchronization" card, showing the "Scan metafields" button, the (?) tooltip open with its text, and the five entity checkboxes: Products, Variants, Orders, Customers, Categories. -->
+<img src="/docs/img/reporting/metafields/s1_settings.png" />
 
 **✅ Scan metafields**: Finds the metafields for the entities checked below. To use one, open a report, search its name under Manage Columns, and click Add as column.  
 **✅ Products / Variants / Orders / Customers / Categories**: Which entities to scan (and later sync) metafields for.
@@ -21,17 +21,21 @@ You can trigger a scan manually from **Settings → Store data → Metafields sy
 2. Type the metafield's name (or part of it) in the search bar.
 3. If a match is found, a card appears:
 
-<!-- SCREENSHOT: Manage Columns search panel, search box containing a metafield name, and the "Found a matching metafield: <namespace.key> (<Entity>). Not added as a report column yet." card with the "Add as column" button. -->
+<img src="/docs/img/reporting/metafields/s2_search-match.png" />
 
 4. Click **Add as column**. The column is created immediately and appears in the column list like any other column — check its box to add it to the report.
 
-<!-- SCREENSHOT: toast notification reading "Column created. It's empty for now — values will appear once sync finishes.", with the new column now visible (unchecked) in the Manage Columns list. -->
+<img src="/docs/img/reporting/metafields/s3_toast.png" />
+
+A toast confirms the column was created and reminds you to refresh the report tab to see it in the column picker:
+
+> Column created. It's empty for now — values will appear once sync finishes. You will also need to refresh the tab.
 
 ### If nothing is found
 
 If your search does not match any known metafield, you will see a generic message with a **Contact support** button instead:
 
-<!-- SCREENSHOT: Manage Columns search panel showing the "Looking for a custom field from Shopify? We couldn't find a match." card with the "Contact support" button. -->
+<img src="/docs/img/reporting/metafields/s4_no-match.png" />
 
 This can mean the metafield genuinely does not exist, or the periodic scan has not picked it up yet — try again later, or reach out to Support.
 
@@ -39,6 +43,7 @@ This can mean the metafield genuinely does not exist, or the periodic scan has n
 
 ### Important Notes
 
+- **Refresh the tab after adding a column.** The report tab needs a refresh before the new column shows up in the column picker.
 - **Values may take time to appear.** Adding a metafield column automatically turns on synchronization for that entity if it was off. The column stays empty until that sync finishes — this can take a few minutes, longer for larger stores.
 - **Scanning and syncing are different steps.** Scanning only detects which metafields exist. Synchronization is what pulls their actual values into your reports.
 - **This does not replace the Metafields synchronization checkboxes.** You can still enable synchronization for an entity manually from **Settings → Store data**, before searching for any specific metafield.
