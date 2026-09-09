@@ -17,7 +17,7 @@ The default tab, where you can add, sort, and remove columns.
 Additional options can be found here:  
 **✅ Select a Model**: Choose between sources.  
 **✅ Select an Explore**: Entity to be used as a general.  
-**✅ Add Column**: Add columns from the list.  
+**✅ Add Column**: Add columns from the list. The search here also finds Shopify metafields that are not columns yet, so you can [turn one into a column](./metafields.md).  
 **✅ Remove All**: Remove All Columns from the report with a single click.  
 **✅ Sort Columns**: Use the Drag'n'Drop action to sort the columns.  
 

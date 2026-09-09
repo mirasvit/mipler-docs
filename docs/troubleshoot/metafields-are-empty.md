@@ -27,6 +27,7 @@ If Metafield columns in Mipler appear empty despite having data in Shopify, it i
 
 - **Synchronization Time**: The time required for synchronization depends directly on the volume of your data.
 - **Updated Reports**: Once synchronization is enabled, Metafield data will be synced, and the previously empty columns in your reports should display the expected data.
+- **Columns added from a report**: If you added the column through a report's column search, synchronization for that entity was already turned on for you, and the column simply stays empty until that sync finishes. See [Metafield Columns](../reporting/metafields.md).
 
 ---
 
