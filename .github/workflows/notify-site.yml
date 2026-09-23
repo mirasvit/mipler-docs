@@ -1,0 +1,38 @@
+# A push here publishes the documentation. This is the part that makes that true.
+#
+# The docs are built and deployed by mirasvit/mipler-site, not by this repository, and the reason is
+# credentials: that build needs the GitLab registry token and the site-deploy App key, which are org
+# secrets granted to the four SITE repositories. Copying them into four documentation repositories
+# to save one API call would widen registry write and site-deploy write to four more places.
+#
+# So the credentials stay there and the trigger comes from here.
+#
+# WHAT IT NEEDS: a secret DOCS_DISPATCH_TOKEN holding a fine-grained token whose ONLY permission is
+# "Actions: read and write" on mirasvit/mipler-site. Not contents, not packages, not this repository --
+# it exists to press one button. Without it this job fails loudly rather than silently doing
+# nothing, which is the failure mode worth having: a documentation push that quietly did not deploy
+# is how /docs/ went stale unnoticed before any of this existed.
+name: notify-site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask mipler-site to rebuild and deploy these docs
+        env:
+          GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::DOCS_DISPATCH_TOKEN is not set, so this push will NOT deploy. Add a fine-grained token with Actions: read and write on mirasvit/mipler-site."
+            exit 1
+          fi
+          gh api repos/mirasvit/mipler-site/dispatches \
+            -f event_type=docs-updated \
+            -f 'client_payload[tree]=mipler' \
+            -f "client_payload[sha]=${GITHUB_SHA}"
+          echo "asked mirasvit/mipler-site to deploy the 'mipler' docs for ${GITHUB_SHA}"
