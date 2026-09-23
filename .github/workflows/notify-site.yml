@@ -7,11 +7,17 @@
 #
 # So the credentials stay there and the trigger comes from here.
 #
-# WHAT IT NEEDS: a secret DOCS_DISPATCH_TOKEN holding a fine-grained token whose ONLY permission is
-# "Actions: read and write" on mirasvit/mipler-site. Not contents, not packages, not this repository --
-# it exists to press one button. Without it this job fails loudly rather than silently doing
-# nothing, which is the failure mode worth having: a documentation push that quietly did not deploy
-# is how /docs/ went stale unnoticed before any of this existed.
+# WHAT IT USES: mirasvit-ci-app, the organisation's CI App, minted with `repositories:` so the token
+# it hands this job reaches ONLY mirasvit/mipler-site -- not this repository, and not the other 180-odd the
+# App is installed on. That scoping is the whole reason the fleet uses one App rather than a token
+# per lane.
+#
+# contents:write, NOT actions:write, is what a repository_dispatch needs. The App already has it;
+# the registry in mirasvit-server/fleet-inventory notes that wsctl's contents:write "exists only
+# because repository_dispatch counts as one". No new credential, no personal access token.
+#
+# A MISSED DISPATCH IS NOT A LOST DEPLOY. mipler-site's docs workflow also runs on a schedule and skips when
+# nothing changed, so this makes propagation immediate rather than making it possible.
 name: notify-site
 
 on:
@@ -23,14 +29,20 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Mint a GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.CI_APP_CLIENT_ID }}
+          private-key: ${{ secrets.CI_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          # Scoped to the one repository this job talks to.
+          repositories: mipler-site
+
       - name: Ask mipler-site to rebuild and deploy these docs
         env:
-          GH_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          if [ -z "$GH_TOKEN" ]; then
-            echo "::error::DOCS_DISPATCH_TOKEN is not set, so this push will NOT deploy. Add a fine-grained token with Actions: read and write on mirasvit/mipler-site."
-            exit 1
-          fi
           gh api repos/mirasvit/mipler-site/dispatches \
             -f event_type=docs-updated \
             -f 'client_payload[tree]=mipler' \
