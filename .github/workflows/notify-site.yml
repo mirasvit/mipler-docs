@@ -7,14 +7,19 @@
 #
 # So the credentials stay there and the trigger comes from here.
 #
-# WHAT IT USES: mirasvit-ci-app, the organisation's CI App, minted with `repositories:` so the token
-# it hands this job reaches ONLY mirasvit/mipler-site -- not this repository, and not the other 180-odd the
-# App is installed on. That scoping is the whole reason the fleet uses one App rather than a token
-# per lane.
+# WHAT IT USES: mirasvit-site-docs-ci, an App that exists for this and nothing else. It is installed
+# on mirasvit/mipler-site and mirasvit/mulwi-site ONLY, carries contents:write and metadata:read
+# ONLY, and its key is readable by the three documentation repositories that send these dispatches.
 #
-# contents:write, NOT actions:write, is what a repository_dispatch needs. The App already has it;
-# the registry in mirasvit-server/fleet-inventory notes that wsctl's contents:write "exists only
-# because repository_dispatch counts as one". No new credential, no personal access token.
+# WHY NOT mirasvit-ci-app, which was the first attempt. That App would have worked -- it already has
+# contents:write -- but it also carries administration:write and pull_requests:write, and its key is
+# readable by 186 repositories. Installing it on the site repos would have meant any of those 186
+# could mint a token that writes to mipler-site and mulwi-site. The fleet registry already warns
+# that it "must never gain a permission that would let a module workflow escalate"; widening its
+# reach instead is the same mistake wearing a different hat.
+#
+# contents:write, NOT actions:write, is what a repository_dispatch needs -- the registry notes that
+# wsctl's contents:write "exists only because repository_dispatch counts as one".
 #
 # A MISSED DISPATCH IS NOT A LOST DEPLOY. mipler-site's docs workflow also runs on a schedule and skips when
 # nothing changed, so this makes propagation immediate rather than making it possible.
@@ -33,8 +38,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          client-id: ${{ vars.CI_APP_CLIENT_ID }}
-          private-key: ${{ secrets.CI_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.SITE_DOCS_CI_APP_CLIENT_ID }}
+          private-key: ${{ secrets.SITE_DOCS_CI_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           # Scoped to the one repository this job talks to.
           repositories: mipler-site
